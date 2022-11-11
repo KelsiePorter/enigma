@@ -67,4 +67,21 @@ RSpec.describe Enigma do
       expect(expected[:date]).to eq(today)
     end
   end
+
+  describe 'it determines the how much to shift the alphabet' do 
+    let(:enigma) { Enigma.new }
+    let(:today) { Date.today.strftime("%m%d%y") }
+
+    it '#split_keys' do 
+      expected = enigma.split_keys("12345")
+      
+      expect(expected).to eq({:a=>12, :b=>23, :c=>34, :d=>45})
+    end
+
+    it '#offsets' do 
+    end
+
+    it '#shifts' do 
+    end
+  end
 end
