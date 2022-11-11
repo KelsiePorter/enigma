@@ -11,4 +11,12 @@ class Enigma
       date: date
     }
   end
+
+  def decrypt(encrypted_message, key, date = today)
+    {
+      decryption: encrypted_message,
+      key: key,
+      date: date
+    }
+  end
 end
