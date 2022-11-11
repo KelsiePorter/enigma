@@ -1,5 +1,8 @@
+require_relative 'generator'
+
 class Cypher
-  
+  include Generator
+
   def split_keys(key)
     {
       a: key[0..1].to_i,
@@ -29,5 +32,16 @@ class Cypher
       c: (the_keys[:c] + the_offsets[:c]),
       d: (the_keys[:d] + the_offsets[:d])
     }
+  end
+
+  def shifted_alphabet
+    # should return a hash where the keys are all of the letters of the alphabet
+    # and the values are the associated shifted characters
+    
+    hash_alphabet = {}
+    alphabet.each do |letter|
+      hash_alphabet[letter] = "#{letter}_shifted"
+    end 
+    hash_alphabet
   end
 end
