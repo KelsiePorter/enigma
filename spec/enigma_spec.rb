@@ -81,10 +81,15 @@ RSpec.describe Enigma do
     it '#offsets' do 
       expected = enigma.offsets("040895")
 
-      expect(expected).to eq({a_offset: 1, b_offset: 0, c_offset: 2, d_offset: 5})      
+      expect(expected).to eq({a: 1, b: 0, c: 2, d: 5})      
     end
 
-    it '#shifts' do 
+    it '#shifts' do
+      keys = enigma.split_keys("02715") 
+      offsets = enigma.offsets("040895")
+      expected = enigma.shifts(keys, offsets)
+
+      expect(expected).to eq({:a=>3, :b=>27, :c=>73, :d=>20})
     end
   end
 end
