@@ -15,11 +15,13 @@ RSpec.describe Enigma do
 
     it 'receives a message and encrypts it' do
       expected = enigma.encrypt("Hello World", "02715", "040895")
+      expected_2 = enigma.encrypt("HELLO WORLD", "02715", "040895")
 
       expect(expected).to be_an(Hash)
       expect(expected.keys.size).to eq(3)
       expect(expected.keys).to eq([:encryption, :key, :date])
       expect(expected[:encryption]).to eq("keder ohulw")
+      expect(expected_2[:encryption]).to eq("keder ohulw")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq("040895")
     end
@@ -55,8 +57,9 @@ RSpec.describe Enigma do
     let(:enigma) { Enigma.new }
     let(:today) { Date.today.strftime("%m%d%y") }
 
-    it 'receives an encrypted message and decrypts it' do 
-      expected = enigma.decrypt("keder ohulw", "02715", "040895")
+    it 'receives an encrypted message and decrypts it' do
+      # why does this test and the below test not work the same way!? 
+      expected = enigma.decrypt("Keder oHulW", "02715", "040895")
 
       expect(expected).to be_an(Hash)
       expect(expected.keys.size).to eq(3)
@@ -67,11 +70,17 @@ RSpec.describe Enigma do
     end
 
     it 'the user can define the decryption key but not the date' do 
-      expected = enigma.decrypt("keder ohulw", "02715")
+      encrypted = enigma.encrypt("hello world", "02715")
+      expected = enigma.decrypt(encrypted[:encryption], "02715") 
 
-      # expect(expected[:decryption]).to eq("hello world")
+      expect(expected[:decryption]).to eq("hello world")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
+
+      encrypted_2 = enigma.encrypt("HELLO WORLD", "02715")
+      expected_2 = enigma.decrypt(encrypted[:encryption], "02715") 
+
+      expect(expected_2[:decryption]).to eq("hello world")
     end
 
     it 'can return the decryption hash' do 
