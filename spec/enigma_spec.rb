@@ -45,17 +45,21 @@ RSpec.describe Enigma do
       expect(key_array.join).to eq(expected[:key])
       expect(expected[:date]).to eq(today)
     end
-
-    it 'returns error if user does not provide a message' do 
-    end
-
   end
 
   describe '#decrypt' do 
-    xit 'receives an encrypted message and decrypts it' do 
-      # expect that it returns a hash (xyz.class).to eq(Hash)
-      # expect that the hash has three keys xyz.keys.size.to eq(3)
-      # expect that the hash has three keys xyz.keys.to eq([:decryption, :key, :date])
+    let(:enigma) { Enigma.new }
+    let(:today) { Date.today.strftime("%m%d%y") }
+
+    it 'receives an encrypted message and decrypts it' do 
+      expected = enigma.decrypt("keder ohulw", "02715", "040895")
+
+      expect(expected).to be_an(Hash)
+      expect(expected.keys.size).to eq(3)
+      expect(expected.keys).to eq([:decryption, :key, :date])
+      # expect(expected[:decryption]).to eq("hello world")
+      expect(expected[:key]).to eq("02715")
+      expect(expected[:date]).to eq("040895")
     end
   end
 end
