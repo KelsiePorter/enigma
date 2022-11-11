@@ -30,9 +30,6 @@ RSpec.describe Enigma do
       # expect(expected[:encryption]).to eq("keder ohulw")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
-      # add expectation for when the user tries to provide a date but not a key
-      # incorrect number of characters will help tell if the user is trying to pass a date
-      # and not a key
     end
 
     it 'the user does not have to define the encryption key or date' do 
@@ -60,6 +57,14 @@ RSpec.describe Enigma do
       # expect(expected[:decryption]).to eq("hello world")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq("040895")
+    end
+
+    it 'the user can define the decryption key but not the date' do 
+      expected = enigma.decrypt("keder ohulw", "02715")
+
+      # expect(expected[:decryption]).to eq("hello world")
+      expect(expected[:key]).to eq("02715")
+      expect(expected[:date]).to eq(today)
     end
   end
 end
