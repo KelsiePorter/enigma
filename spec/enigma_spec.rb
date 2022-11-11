@@ -19,7 +19,7 @@ RSpec.describe Enigma do
       expect(expected).to be_an(Hash)
       expect(expected.keys.size).to eq(3)
       expect(expected.keys).to eq([:encryption, :key, :date])
-      # expect(expected[:encryption]).to eq("keder ohulw")
+      expect(expected[:encryption]).to eq("keder ohulw")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq("040895")
     end
@@ -27,7 +27,7 @@ RSpec.describe Enigma do
     it 'the user can define the encryption key but not the date' do 
       expected = enigma.encrypt("Hello World", "02715")
 
-      # expect(expected[:encryption]).to eq("keder ohulw")
+      expect(expected[:encryption]).to eq("rmjdyhugatb")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
     end
@@ -35,8 +35,9 @@ RSpec.describe Enigma do
     it 'the user does not have to define the encryption key or date' do 
       expected = enigma.encrypt("Hello World")
       key_array = expected[:key].chars.map { |num| num.to_i.to_s }
-
-      # expect(expected[:encryption]).to eq("keder ohulw")
+      # how would I test the encrypted message on this one since it changes
+      # every time the test is run?
+      expect(expected[:encryption].length).to eq(11)
       expect(expected[:key]).to be_an(String)
       expect(expected[:key].length).to eq(5)
       expect(key_array.join).to eq(expected[:key])
