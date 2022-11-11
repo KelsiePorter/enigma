@@ -33,15 +33,4 @@ class Cypher
       d: (the_keys[:d] + the_offsets[:d])
     }
   end
-
-  def shifted_alphabet
-    # should return a hash where the keys are all of the letters of the alphabet
-    # and the values are the associated shifted characters
-    
-    hash_alphabet = {}
-    alphabet.each do |letter|
-      hash_alphabet[letter] = "#{letter}_shifted"
-    end 
-    hash_alphabet
-  end
 end
