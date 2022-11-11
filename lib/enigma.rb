@@ -1,15 +1,18 @@
-require_relative 'generator'
 require_relative 'cypher'
 
 class Enigma < Cypher 
-  include Generator
 
   def encrypt(message, key = random_key, date = today)
+    message = message.downcase
     the_keys = split_keys(key)
     the_offsets = offsets(date)
     the_shifts = shifts(the_keys, the_offsets)
+    encrypted_message = ''
+    message.chars.each do |char|
+      encrypted_message += shifted_alphabet[char]
+    end 
     {
-      encryption: message,
+      encryption: encrypted_message,
       key: key,
       date: date
     }
