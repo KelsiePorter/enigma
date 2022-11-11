@@ -72,13 +72,16 @@ RSpec.describe Enigma do
     let(:enigma) { Enigma.new }
     let(:today) { Date.today.strftime("%m%d%y") }
 
-    it '#split_keys' do 
+    it '#split_keys and turn to integers' do 
       expected = enigma.split_keys("12345")
       
       expect(expected).to eq({:a=>12, :b=>23, :c=>34, :d=>45})
     end
 
     it '#offsets' do 
+      expected = enigma.offsets("040895")
+
+      expect(expected).to eq({a_offset: 1, b_offset: 0, c_offset: 2, d_offset: 5})      
     end
 
     it '#shifts' do 
