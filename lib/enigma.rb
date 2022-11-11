@@ -15,6 +15,7 @@ class Enigma < Cypher
   end
 
   def decrypt(encrypted_message, key, date = today)
+    encrypted_message = encrypted_message.downcase
     the_keys = split_keys(key)
     the_offsets = offsets(date)
     the_shifts = shifts(the_keys, the_offsets)
