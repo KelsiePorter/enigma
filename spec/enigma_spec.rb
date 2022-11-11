@@ -43,6 +43,12 @@ RSpec.describe Enigma do
       expect(key_array.join).to eq(expected[:key])
       expect(expected[:date]).to eq(today)
     end
+    
+    it 'can return the encryption hash' do 
+      expected = enigma.encrypt("Hello World", "02715", "040895")
+
+      expect(expected).to be_a(Hash)
+    end
   end
 
   describe '#decrypt' do 
@@ -63,9 +69,15 @@ RSpec.describe Enigma do
     it 'the user can define the decryption key but not the date' do 
       expected = enigma.decrypt("keder ohulw", "02715")
 
-      expect(expected[:decryption]).to eq("hello world")
+      # expect(expected[:decryption]).to eq("hello world")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
+    end
+
+    it 'can return the decryption hash' do 
+      expected = enigma.decrypt("keder ohulw", "02715", "040895")
+      
+      expect(expected).to be_a(Hash)
     end
   end
 end
