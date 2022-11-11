@@ -5,6 +5,7 @@ class Enigma
 
   def encrypt(message, key = random_key, date = today)
     the_keys = split_keys(key)
+    the_offsets = offsets(date)
     {
       encryption: message,
       key: key,
@@ -29,7 +30,17 @@ class Enigma
     }
   end
 
-  def offsets
+  def offsets(date)
+    integer_date = date.to_i
+    squared_date = integer_date * integer_date
+    last_four_characters = squared_date.to_s[-4..-1]
+    last_four_digits_array = last_four_characters.chars
+    {
+      a_offset: last_four_digits_array[0].to_i,
+      b_offset: last_four_digits_array[1].to_i,
+      c_offset: last_four_digits_array[2].to_i,
+      d_offset: last_four_digits_array[3].to_i
+    }
   end
 
   def shifts
