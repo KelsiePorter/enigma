@@ -26,7 +26,7 @@ RSpec.describe Enigma do
 
     it 'the user can define the encryption key but not the date' do 
       expected = enigma.encrypt("Hello World", "02715")
-
+      # Is this going to fail when I run this test tomorrow? Since the date will be diff?
       expect(expected[:encryption]).to eq("rmjdyhugatb")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
@@ -55,7 +55,7 @@ RSpec.describe Enigma do
       expect(expected).to be_an(Hash)
       expect(expected.keys.size).to eq(3)
       expect(expected.keys).to eq([:decryption, :key, :date])
-      # expect(expected[:decryption]).to eq("hello world")
+      expect(expected[:decryption]).to eq("hello world")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq("040895")
     end
@@ -63,7 +63,7 @@ RSpec.describe Enigma do
     it 'the user can define the decryption key but not the date' do 
       expected = enigma.decrypt("keder ohulw", "02715")
 
-      # expect(expected[:decryption]).to eq("hello world")
+      expect(expected[:decryption]).to eq("hello world")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq(today)
     end
