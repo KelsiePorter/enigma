@@ -1,6 +1,6 @@
 module Generator 
   def today 
-    Date.today.strftime("%m%d%y")
+    Date.today.strftime("%d%m%y")
   end
 
   def random_key 
