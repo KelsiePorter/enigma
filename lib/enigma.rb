@@ -30,7 +30,9 @@ class Enigma < Cypher
     counter = 0
     output = ''
     message.chars.each do |letter|
-      if counter == 0
+      if alphabet.include?(letter) == false
+        output += letter
+      elsif counter == 0
         shifted_alphabet = alphabet.rotate(the_shifts[:a])
         index_position = alphabet.find_index(letter)
         output += shifted_alphabet[index_position]
@@ -59,7 +61,9 @@ class Enigma < Cypher
     counter = 0
     output = ''
     message.chars.each do |letter|
-      if counter == 0
+      if alphabet.include?(letter) == false
+        output += letter
+      elsif counter == 0
         shifted_alphabet = alphabet.rotate(-the_shifts[:a])
         index_position = alphabet.find_index(letter)
         output += shifted_alphabet[index_position]
