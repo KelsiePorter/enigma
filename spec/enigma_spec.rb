@@ -29,6 +29,7 @@ RSpec.describe Enigma do
     end
 
     it 'the user can define the encryption key but not the date' do 
+      # allow(enigma).to receive(:date).and_return("111122")
       expected = enigma.encrypt("Hello World", "02715")
       # Is this going to fail when I run this test tomorrow? Since the date will be diff?
       # expect(expected[:encryption]).to eq("rmjdyhugatb")
