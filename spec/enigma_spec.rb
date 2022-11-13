@@ -83,12 +83,12 @@ RSpec.describe Enigma do
 
     it 'receives an encrypted message and decrypts it' do
       expected = enigma.decrypt("Keder oHulW", "02715", "040895")
-      expected_2 = enigma.decrypt("%Keder oHulW&", "02715", "040895")
+      expected_2 = enigma.decrypt("%K!eder oHulW&", "02715", "040895")
       
       expect(expected.keys.size).to eq(3)
       expect(expected.keys).to eq([:decryption, :key, :date])
       expect(expected[:decryption]).to eq("hello world")
-      expect(expected_2[:decryption]).to eq("%hello world&")
+      expect(expected_2[:decryption]).to eq("%h!ello world&")
       expect(expected[:key]).to eq("02715")
       expect(expected[:date]).to eq("040895")
     end
