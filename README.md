@@ -13,4 +13,4 @@
 ##### Above Expectations for using stubs where test was otherwise not possible due to randomness. Meets expectations for both unit and intergration level tests. Edge cases such as unique characters are addresses and tested. SimpleCov shows 100% test coverage. Meets expectations for git history showing that I used TDD during the entire project.
 
 #### **Version Control -**
-##### Above Expectations for version control with 5 pull requests 55+ commits. I very rarely commited for more that one piece of functionality. I tried to practice developer empathy with my commit messages and branch names.
+##### Above Expectations for version control with 5 pull and requests 55+ commits. I very rarely commited for more that one piece of functionality. I tried to practice developer empathy with my commit messages and branch names.
