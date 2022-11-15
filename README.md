@@ -4,7 +4,7 @@
 ##### Meets expectations. Using the command line interface shows that the `encrypt` and `decrypt` methods are both functioning properly.
 
 #### **Object Oriented Programming -**
-##### Above expectations for including inheritance (`cypher` superclass) and one module (`generator`). The `cypher` superclass hosts methods used to shift the keys for both `encrypt` and `decrypt`and includes methods from the `generator` module. The `generator` module hosts methods used to generate the alphabet, random key, and today's date. Meets expectations for class size/knowledge/behavior and single responsibilities.
+##### Above expectations for including inheritance (`cypher` superclass) and two modules (`generator` and `filable`). The `cypher` superclass hosts methods used to shift the keys for both `encrypt` and `decrypt`and includes methods from the `generator` module. The `generator` module hosts methods used to generate the alphabet, random key, and today's date. The `fileable` module includes methods that are agnostic. These methods help read and write files. In addition, I implemented OOP when I abstracted work from the runner scripts into a `Runner` class that hosts methods that both `encrypt.rb` and `decrypt.rb` use. Meets expectations for class size/knowledge/behavior and single responsibilities.
 
 #### **Ruby Conventions and Mechanics -**
 ##### Meets expectations for indentation, length of lines, following naming conventions. My code is properly indented, spaced, and lines have been kept fairly short. The `encrypt` and `decrypt` methods are 7 lines, however, their helper methods are much longer. Meets expectations for enumerables, data structures, and implementing a hash.

@@ -33,4 +33,15 @@ class Cypher
       d: (the_keys[:d] + the_offsets[:d])
     }
   end
+
+  def shifted_letter(letter, shift_hash, shift, reverse = false)
+    if reverse
+      number_of_shifts = -shift_hash[shift]
+    else 
+      number_of_shifts = shift_hash[shift]
+    end 
+    shifted_alphabet = alphabet.rotate(number_of_shifts)
+    index_position = alphabet.find_index(letter)
+    shifted_alphabet[index_position]
+  end 
 end

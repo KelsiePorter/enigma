@@ -11,7 +11,6 @@ RSpec.describe Enigma do
   
   describe '#encrypt' do 
     let(:enigma) { Enigma.new }
-    let(:today) { Date.today.strftime("%d%m%y") }
 
     it 'can return the encryption hash' do 
       expected = enigma.encrypt("Hello World", "02715", "040895")
@@ -69,7 +68,6 @@ RSpec.describe Enigma do
 
   describe '#decrypt' do 
     let(:enigma) { Enigma.new }
-    let(:today) { Date.today.strftime("%d%m%y") }
 
     it 'can return the decryption hash' do 
       expected = enigma.decrypt("keder ohulw", "02715", "040895")
