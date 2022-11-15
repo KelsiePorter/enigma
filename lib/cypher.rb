@@ -35,21 +35,13 @@ class Cypher
   end
 
   def shifted_letter(letter, shift_hash, shift, reverse = false)
-    # reverse arg being set to false by default allows me to use this helper 
-    # method with both #encrypted_message and #decrypt_message
     if reverse
       number_of_shifts = -shift_hash[shift]
-      # if reverse == true shift backwards through the shifts_hash
     else 
       number_of_shifts = shift_hash[shift]
     end 
     shifted_alphabet = alphabet.rotate(number_of_shifts)
-    # The arg that is passed in depends on when condition from above is met
     index_position = alphabet.find_index(letter)
-    # Built in ruby method to find the index position of the letter arg 
-    # in the alphabet method from teh generator module
     shifted_alphabet[index_position]
-    # The return is the NEW letter that is in the index position of the 
-    # letter we are on in either the forward or backward shifted alphabet.
   end 
 end
