@@ -51,19 +51,11 @@ class Enigma < Cypher
 
   def decrypted_message(message, shifts)
     counter = 0
-    # Used a counter here to help progress the message through the
-    # various a,b,c,d shifts and align with the index position in the
-    # aplhabet. The counter is not called in first if statement
-    # to account for unique character without affecting which shift
-    # it is on.
     output = ''
     message.chars.each do |letter|
       if !alphabet.include?(letter)
         output += letter
       elsif counter == 0
-        # Created a helper method in cypher to shift the letters
-        # based on which letter I am iterating on and which shift I am
-        # on (a:, :b, :c, or :d)
         output += shifted_letter(letter, shifts, :a, true)
         counter += 1
       elsif counter == 1
